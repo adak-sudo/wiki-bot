@@ -2,6 +2,22 @@ import logging
 import requests
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler
+from flask import Flask
+from threading import Thread
+import os
+
+app_flask = Flask('')
+
+@app_flask.route('/')
+def home():
+    return "Bot Çalışıyor!"
+
+def run():
+    app_flask.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
 
 # --- AYARLAR ---
 # BotFather'dan aldığın Token'ı buraya yapıştır
@@ -88,6 +104,7 @@ async def bilgi_gonder(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # --- ANA ÇALIŞTIRICI ---
 if __name__ == '__main__':
+    keep_alive() # Web sunucusunu başlat
     # Uygulamayı başlatıyoruz
     app = ApplicationBuilder().token(TOKEN).build()
     
