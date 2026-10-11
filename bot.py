@@ -21,7 +21,7 @@ def keep_alive():
 
 # --- AYARLAR ---
 # BotFather'dan aldığın Token'ı buraya yapıştır
-TOKEN = '7766706327:AAFQK1IPFvPt5DEFA-N_c9aBdbxiyNtor18'
+TOKEN = '7766706327:AAHwPgq8FB7HRxejt1Ei9JZ_NLb01uwlovA'
 
 # Loglama ayarı (Hataları görmek için)
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
